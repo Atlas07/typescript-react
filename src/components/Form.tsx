@@ -27,14 +27,15 @@ const Submit = styled.input`
   font-size: 16px;
   outline: none;
   padding: 0;
+  cursor: pointer;
 `;
 
-interface FormProps {
+type FormProps = {
   submit: (data: IInputsState) => void;
   className?: string;
 }
 
-export interface IInputsState {
+export type IInputsState = {
   username: string;
 }
 
@@ -68,7 +69,11 @@ const Form: React.FC<FormProps> = ({ submit }) => {
         />
       </Container>
 
-      <Submit type="submit" value="Get info" />
+      <Submit
+        type="submit"
+        value="Get info"
+        disabled={!inputsState.username.length}
+      />
     </Root>
   );
 };
